@@ -1,0 +1,97 @@
+{% extends 'layout.html'%}
+{%block content%}
+<style type="text/css">
+	h4{
+		color: red !important;
+}
+
+</style>
+<form method="POST" id="formValidate" action="">
+
+	<div class="row">
+		<div class="container">
+			<h4 id="regh4">Let Start Register</h4>
+	<div class="row">
+
+		<div class="col l3"></div>
+
+        <div class="input-field col m6 s12 MynameField">
+          {{ form.csrf_token }}
+          {{form.name.label}}
+        	{{form.name}}
+         <p id="unameE"></p>
+        </div>
+      </div>
+
+      <div class="row">
+		<div class="col l3"></div>
+        <div class="input-field col s12 m6">
+          {{form.email.label}}
+        	{{form.email}}
+          <p id="emailE"></p>
+        </div>
+       </div>
+       <div class="row">
+		      <div class="col l3"></div>
+           <div class="input-field col s12 m6">
+              {{form.password.label}}
+        	    {{form.password}}
+              <p id="passE"></p>
+          </div>
+        </div>
+         <div class="row">
+          <div class="col l3"></div>
+           <div class="input-field col s12 m6">
+              {{form.c_pass.label}}
+               {{form.c_pass}}
+              <p id="cpassE"></p>
+          </div>
+        </div>
+        <div class="row" onclick="validation()">
+        	<div class="col s4 m3 l5"></div>
+          {{form.submit(class = 'btn waves-effect waves-light')}}
+        </div>
+</div>
+</div>
+
+</form>
+  <script type="text/javascript">
+    var temail = document.getElementById('email');
+    temail.setAttribute("type", "email");
+  </script>
+<script type="text/javascript">
+  function validation() {
+
+    // Check user Name
+    var name = document.getElementById('name').value;
+    if (name == ''){
+    var uname = document.getElementById('unameE').innerHTML ="<p>User Name is incorrect</p>";
+  }
+    //check mail
+
+    var email = document.getElementById('email').value;
+    if (email == ''){
+    var umail = document.getElementById('emailE').innerHTML ="<p>Mail Id is incorrect or </p>";
+  }
+    
+
+    //check password
+      var pass = document.getElementById('password').value;
+    if (pass == ''){
+    var upass = document.getElementById('passE').innerHTML ="<p>Password is incorrect</p>";
+  }
+    
+    //check c_pass
+    var cpass = document.getElementById('c_pass').value;
+
+    if (cpass !== pass){
+    alert("Password is Not Match");
+    var ucpass = document.getElementById('cpassE').innerHTML ="<p>Password Does not Match</p>";
+    }
+    
+}
+  
+ 
+</script>
+{%endblock content%}
+

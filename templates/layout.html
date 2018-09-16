@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>F-C {{title}}</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename ='materialize.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'main.css')}}">
+	{% block head%}
+	{%endblock head%}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<!-- Navigation Bar -->
+<nav>
+    <div class="nav-wrapper blue">
+      <a href="/" class="brand-logo left">F-C </a>
+      <ul id="nav-mobile" class="right">
+        <li><a href="login">Login</a></li>
+        <li><a href="register">Signup</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+{% block content%}
+
+{% endblock content%}
+<!-- Footer -->
+    <footer class="page-footer teal ">
+        <div class="row"></div>
+            <div class="container ">
+            <span id="footertext">© 2014 Copyright Text</span>
+            <a id="fa" class="grey-text text-lighten-4 right" href="{{url_for('index')}}">Home</a>
+            </div>
+        </footer>
+<script type="text/javascript" src="{{url_for('static',filename = 'materialize.min.js')}}"></script>
+<style type="text/css">
+#footertext,#fa{
+  position: relative;
+  bottom: 20px;
+}
+</style>
+{% block Minit%}
+
+{%endblock Minit%}
+</body>
+</html>
