@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for, redirect
+from flask import Flask, request, url_for, redirect,session
 from flask import render_template
 from flask_mysqldb import MySQL
 from form import register_form
@@ -11,7 +11,7 @@ app.config['SECRET_KEY'] = '112345678'
 # DB config
 app.config['MYSQL_HOST'] ='localhost'
 app.config['MYSQL_USER'] ='root'
-app.config['MYSQL_PASSWORD'] =''
+app.config['MYSQL_PASSWORD'] ='password'
 app.config['MYSQL_DB'] ='flaskapp'
 app.config['MYSQL_CURSORCLASS'] ='DictCursor' #For returning Dictionary type data
 
@@ -56,19 +56,33 @@ def login():
 			print(data)
 			# Check password
 			dbpassword = data['password']
-			print(dbpassword)
+			username = data['name']
 			if e_pass == dbpassword:
 				app.logger.info("Password Matched")
+				session['logged_in'] = True
+				session['user'] = username
+				return redirect(url_for('profile'))
 			else:
-				app.logger.info("Password Not Matched")	
+				error = "Invalid Login"
+				return render_template('login.html', error = error)
 		else:
-			app.logger.info("User Not Found")	
-		return redirect(url_for('login'))
+			error = "No user Found "
+			return render_template('login.html', error = error)
+		cur.close()	
+		
 	else:
 		return render_template('login.html')	
+# ------------------------------Profile--------------------------------------
 
+@app.route('/profile')
+def profile():
+	return render_template('profile.html')
 
-
+# Logout
+@app.route('/logout')
+def logout():
+	session.clear()
+	return redirect(url_for('login'))
 
 
 

@@ -15,9 +15,12 @@
     <div class="nav-wrapper blue">
       <a href="/" class="brand-logo left">F-C </a>
       <ul id="nav-mobile" class="right">
+        {%if session.logged_in%}
+        <li><a href="{{url_for('logout')}}">Logout</a></li>
+        {%else%}
         <li><a href="{{ url_for('login') }}">Login</a></li>
         <li><a href="{{ url_for('register')}} ">Signup</a></li>
-        <li><a href="about.html">About</a></li>
+        {%endif%}
       </ul>
     </div>
   </nav>

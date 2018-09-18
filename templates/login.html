@@ -2,7 +2,11 @@
 {%block content%}
 
 <form method="post" action="">
-	<div class="container center"><h5>Login</h5></div>
+	<div class="container center"><h5>Login</h5>
+    {%if error%}
+      <p>{{error}}</p>
+    {%endif%}
+  </div>
 	<div class="row">
 		<div class="col l3"></div>
         <div class="input-field col m6 s12">
