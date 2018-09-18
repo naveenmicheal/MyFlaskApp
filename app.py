@@ -1,7 +1,7 @@
 from flask import Flask, request, url_for, redirect
 from flask import render_template
 from flask_mysqldb import MySQL
-from form import register_form, login
+from form import register_form
 app = Flask(__name__)
 mysql = MySQL(app)
 
@@ -39,8 +39,33 @@ def register():
 	else:
 		return render_template('register.html', form = form)		
 
+# ---------------------------------------Login----------------------------------------
 
+@app.route('/login', methods=['POST','GET'])
+def login():
+	if request.method =='POST':
+		email = request.form['email']
+		e_pass = request.form['password']
+		# print('{} {}'.format(email, e_pass))
+		# Mysql connction
 
+		cur = mysql.connection.cursor()
+		result = cur.execute("""SELECT * FROM user WHERE email =%s""",[email])
+		if result>0:
+			data = cur.fetchone()
+			print(data)
+			# Check password
+			dbpassword = data['password']
+			print(dbpassword)
+			if e_pass == dbpassword:
+				app.logger.info("Password Matched")
+			else:
+				app.logger.info("Password Not Matched")	
+		else:
+			app.logger.info("User Not Found")	
+		return redirect(url_for('login'))
+	else:
+		return render_template('login.html')	
 
 
 

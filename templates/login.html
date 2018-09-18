@@ -1,0 +1,38 @@
+{%extends 'layout.html'%}
+{%block content%}
+
+<form method="post" action="">
+	<div class="container center"><h5>Login</h5></div>
+	<div class="row">
+		<div class="col l3"></div>
+        <div class="input-field col m6 s12">
+        <span>Email</span>
+          <input placeholder="Enter Your Email" required id="email" type="email" name="email"  class="validate">
+        </div>
+       </div> 
+       <div class="row">
+		<div class="col l3"></div>
+        <div class="input-field col m6 s12">
+        <span>Password</span>
+          <input placeholder="Enter Your Password" required id="password" type="Password" name="password" class="validate">
+        </div>
+       </div>
+
+       <div class="row">
+       	<div class="col l5 s5"></div>
+       	<input class="btn" type="submit" name="login">
+       </div>
+</form>
+<br>
+<br>
+<br><br><br><br><br><br><br><br><br>
+<script type="text/javascript">
+	function validate() {
+		var email = document.getElementById('email').value;
+		if (email ==''){
+		alert("Error")
+		}
+	}
+	
+</script>
+{%endblock content%}
