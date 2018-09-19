@@ -1,5 +1,13 @@
 {%extends 'layout.html'%}
 {%block content%}
 	<h1 class="center">Hello {{session.user}}</h1>
+	<div class="container">
+		{% if postinfo%}
+		<p>{{postinfo}}</p>
+		{%endif%}
+		<a class="btn" href="{{url_for('add_post')}}">Add Post</a>
+		
+	</div>
+	
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {%endblock content%}	
