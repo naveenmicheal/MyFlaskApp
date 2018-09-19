@@ -2,9 +2,12 @@
 {%block content%}
 
 <form method="post" action="">
-	<div class="container center"><h5>Login</h5>
+	<div class="container center"><h5>Login to Continue</h5>
+    {%if data123%}
+      <p id="data123">{{data123}}</p>
+    {%endif%}
     {%if error%}
-      <p>{{error}}</p>
+      <p id="error">{{error}}</p>
     {%endif%}
   </div>
 	<div class="row">
@@ -30,6 +33,11 @@
 <br>
 <br>
 <br><br><br><br><br><br><br><br><br>
+<style type="text/css">
+  #data123,#error{
+    color: red;
+  }
+</style>
 <script type="text/javascript">
 	function validate() {
 		var email = document.getElementById('email').value;

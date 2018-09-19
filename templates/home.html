@@ -43,7 +43,14 @@
  
 
  <!-- Cards -->
- <div class="center"><h4>Contents</h4></div>
+ <div class="center">
+  {% if session.logged_in %}
+  <p>Logged in as {{session.user}}</p>
+  {%else%}
+  <p>You are not still logged in, Lets join</p>
+  {%endif%}
+
+  </div>
   <div class="col s9 m7">
     <h2 class="header center">Dummy Content</h2>
     <div class="card horizontal">

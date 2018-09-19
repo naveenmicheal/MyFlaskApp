@@ -4,6 +4,14 @@
 	<title>F-C {{title}}</title>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename ='materialize.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'main.css')}}">
+  <style type="text/css">
+    body{
+      background-color: #eceff1;
+    }
+    .brand-logo{
+      margin-left: 20px;
+    }
+  </style>
 	{% block head%}
 	{%endblock head%}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +24,7 @@
       <a href="/" class="brand-logo left">F-C </a>
       <ul id="nav-mobile" class="right">
         {%if session.logged_in%}
+        <li><a href="{{url_for('profile')}}">Profile</a></li>
         <li><a href="{{url_for('logout')}}">Logout</a></li>
         {%else%}
         <li><a href="{{ url_for('login') }}">Login</a></li>
