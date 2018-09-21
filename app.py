@@ -102,24 +102,27 @@ def profile():
 def add_post():
 	form = post_form(request.form)
 	if request.method =='POST' and form.validate():
-		title = request.form['title']
+		title = request.form['title']    
 		author = session['user']
 		content = request.form['content']
-		print(title)
-		print(author)
-		print(content)
 		cur = mysql.connection.cursor()
 		cur.execute("""INSERT INTO posts (title,author,content)
 		 VALUES(%s,%s,%s)""",(title, author,content))
 		mysql.connection.commit()
 		cur.close()
-
 		postinfo = "Your Recent Contennt is Added"
 		app.logger.info(postinfo)
 		return redirect(url_for('profile',postinfo = postinfo))
 	else:
-		app.logger.info("Form Invalid")
+		app.logger.info("Form Invalid or GET Request")
 		return render_template('add_post.html', form = form)	
+
+@app.route('/preview', methods =['POST','GET'])
+@is_logged_in
+def preview():
+	title = request.cookies.get('title')
+	content = request.cookies.get('content')
+	return render_template('preview.html', title=title,content =content)
 
 # Logout
 @app.route('/logout')

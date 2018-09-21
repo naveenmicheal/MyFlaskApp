@@ -13,21 +13,22 @@
           </div>
       </div>
       <br>
-      <div class="row">
+
+  <div class="row">
 		<div class="col l3"></div>
         <div class="input-field col m8 l8 s12">
-          
-         
-          {{form.content.label}}
-          {{form.content}}
+          {{form.content.label}} 
+          {{form.content(class ="materialize-textarea")}}
         </div>
-      </div>
+    </div>
+
       <div class="container">
         <div class="row">
 		<div class="col m5 l5"></div>
         <div class="input-field col m8 l4 s12">
         
           {{form.submit(class = 'btn waves-effect waves-light')}}
+          <a class ='btn black' target="_blank" onclick="getdata()"  href="{{url_for('preview')}}">Preview</a>
         </div>
       </div>
 		</div>
@@ -36,5 +37,16 @@
 	<br><br>
 </div>
 	<hr>
-<br><br>	
+  <script type="text/javascript">
+ function getdata() {
+  var title = document.getElementById('title').value;
+  var content = document.getElementById('content').value;
+  console.log(title);
+  console.log(content);
+  document.cookie = 'title ='+title;
+  document.cookie = 'content ='+content;
+  } 
+</script>  
+<br><br>
+
 	{%endblock content%}
