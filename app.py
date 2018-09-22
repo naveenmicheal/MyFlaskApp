@@ -6,6 +6,7 @@ from form import register_form,post_form
 app = Flask(__name__)
 mysql = MySQL(app)
 
+
 app.secret_key = 'MyKey123'
 app.config['SECRET_KEY'] = '112345678'
 
@@ -20,7 +21,22 @@ app.config['MYSQL_CURSORCLASS'] ='DictCursor' #For returning Dictionary type dat
 
 @app.route('/')
 def index():
-    return render_template('home.html')
+	cur = mysql.connection.cursor()
+	result = cur.execute("SELECT * FROM posts")
+	print(result)
+	posts = cur.fetchall()
+	print(type(posts))  # Returs Dictinary Data
+	return render_template('home.html', posts = posts)
+
+# @app.route('/posts')
+# def posts():
+# 	cur = mysql.connection.cursor()
+# 	cur.execute("SELECT * FROM posts")
+# 	for data in range(3):
+# 		data = cur.fetchone()
+# 		title = data['title']
+# 		print(title)
+# 	return render_template('posts.html',title =title)
 
 @app.route('/register', methods = ['POST', 'GET'])
 def register():
@@ -120,6 +136,7 @@ def add_post():
 @app.route('/preview', methods =['POST','GET'])
 @is_logged_in
 def preview():
+	
 	title = request.cookies.get('title')
 	content = request.cookies.get('content')
 	return render_template('preview.html', title=title,content =content)

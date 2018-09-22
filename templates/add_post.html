@@ -41,6 +41,7 @@
  function getdata() {
   var title = document.getElementById('title').value;
   var content = document.getElementById('content').value;
+  content = String(content);
   console.log(title);
   console.log(content);
   document.cookie = 'title ='+title;

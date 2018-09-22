@@ -49,70 +49,62 @@
   {%else%}
   <p>You are not still logged in, Lets join</p>
   {%endif%}
-
   </div>
-  <div class="col s9 m7">
-    <h2 class="header center">Dummy Content</h2>
+  <h6 class="center">Recent Posts</h6>
+  {%for post in posts%}
+<div class="center">
+<ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div id="title" class="collapsible-header"><i class="material-icons">description</i> <h6>{{post['title']}}</h6></div>
+      <div class="collapsible-body"><span>{{post['content']}}</span></div>
+    </li>
+    <!-- <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li> -->
+  </ul>
+ </div>
+ </div> 
+  <!-- <div class="col s9 m7">
+    <h2 class="header center">{{post['title']}}</h2>
     <div class="card horizontal">
       </div>
       <div class="card-stacked">
         <div class="card-content center">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>{{post['content']}}</p>
         </div>
         <div class="card-action center">
           <a href="#">This is a link</a>
         </div>
       </div>
     </div>
-  </div>
-   <div class="col s9 m7">
-    <h2 class="header center"> New Arrival </h2>
-    <div class="card horizontal">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content center" >
-          <p>I am a very simple card. I am good at containing small bits of information.
-          	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="card-action center">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-  </div>
-   <div class="col s9 m7">
-    <h2 class="header center">New Arrival</h2>
-    <div class="card horizontal">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content center">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.I am a very simple card. I am good at containing small bits of information.</p>
-        </div>
-        <div class="card-action center">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-  </div>
-{% endblock content%}
+  </div> -->
+  {%endfor%}
+  
+   {% endblock content%}
+  
 
 {%block Minit%}
+<!-- Collapsible Initialization -->
+<script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+    var collaps = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(collaps, {});
+  });
+  </script>
+<style type="text/css">
+  .collapsible{
+    margin: 0;
+
+  }
+ #title h6{
+  margin-left:3%;
+ }
+</style>
 	<script type="text/javascript">
 		M.AutoInit();
 	</script>
