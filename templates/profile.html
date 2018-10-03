@@ -1,13 +1,35 @@
 {%extends 'layout.html'%}
 {%block content%}
-	<h3 class="center">Hello {{session.user}}</h3>
+	<h3 class="center">Hello <span id="username">{{session.user}}</span></h3>
 	<div class="container">
 		{% if postinfo%}
 		<p>{{postinfo}}</p>
 		{%endif%}
-		<a class="btn" href="{{url_for('add_post')}}">Add Post</a>
-		
+		<div class="profile">
+			
+		</div>
+		<div class="row">
+			<div class="responsive-img" style="background-image:url(../static/anymscover.jpg);
+			height: 200px; border-radius: 5px;" class="col s12 m12, l12">
+				<img style="width: 100px; height: 100px" src="{{url_for('static', filename ='anyms.png')}}">
+			</div>
+		</div>
+	<!-- 	<div class="row">
+			<div class="col s m12 l8"> -->
+		<a style="margin-right: 10px; margin-top: 20px;" class="btn" href="{{url_for('add_post')}}">Add Post</a>
+		<a style="margin-right: 10px;margin-top: 20px;"class="btn blue" href="#">Forums</a>
+		<a style="margin-right: 10px;margin-top: 20px;"class="btn green" href="#">Messages</a>
+		<a style="margin-right: 10px;margin-top: 20px;"class="btn red" href="#">Report</a>
+		<a style="margin-right: 10px;margin-top: 20px;"class="btn black" href="#">Anoncement</a>
+	<!-- /div>
+		</div> -->
 	</div>
 	
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<script type="text/javascript">
+	var user = document.getElementById('username').value;
+	console.log(user)
+	document.cookie = "user="+user;
+</script>	
 {%endblock content%}	

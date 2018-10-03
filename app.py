@@ -78,6 +78,7 @@ def login():
 				app.logger.info("Password Matched")
 				session['logged_in'] = True
 				session['user'] = username
+
 				return redirect(url_for('profile'))
 			else:
 				error = "Invalid Login"
@@ -108,6 +109,13 @@ def is_logged_in(f):
 @app.route('/profile',methods =['POST','GET'])
 @is_logged_in
 def profile():
+	# cur = mysql.connection.cursor()
+	# result = cur.execute("SELECT * FROM posts where author=%s"%session.user)
+	# print(result)
+	# posts = cur.fetchall()
+	# print(type(posts))
+	# print(posts) 
+
 	postinfo = request.args.get('postinfo')
 	return render_template('profile.html', postinfo = postinfo)
 
@@ -147,8 +155,6 @@ def preview():
 def logout():
 	session.clear()
 	return redirect(url_for('login'))
-
-
 
 
 if __name__ == '__main__':

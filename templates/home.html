@@ -3,17 +3,18 @@
 <!-- Slider -->
   <div class="carousel carousel-slider center">
     <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">Learn More</a>
+      <a class="btn waves-effect black grey-text darken-text-2">Learn More</a>
     </div>
-    <div class="carousel-item red white-text" href="#one!">
+    <div class="carousel-item indigo white-text" href="#one!">
       <h2>Join Hands to make Strength</h2>
+      <br>
       <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
       quis nostrud exercitation ullam ariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-    <div class="carousel-item amber white-text" href="#two!">
-      <h2>Books are a Real Weapons because it helps to train Brain</h2>
+    <div class="carousel-item deep-purple darken-4 white-text" href="#two!">
+      <h2>Books are a Real Weapons because it helps to train Brain</h2><br>
       <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -21,8 +22,8 @@
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>Python Rocks </h2>
+    <div class="carousel-item red darken-3 white-text" href="#three!">
+      <h2>Python Rocks </h2><br>
       <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -30,8 +31,8 @@
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h2>Lets to Build Something</h2>
+    <div class="carousel-item purple darken-4 white-text" href="#four!">
+      <h2>Lets to Build Something</h2><br>
       <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -53,10 +54,14 @@
   <h6 class="center">Recent Posts</h6>
   {%for post in posts%}
 <div class="center">
-<ul class="collapsible" data-collapsible="accordion">
+<ul class="collapsible popout" data-collapsible="accordion">
     <li>
       <div id="title" class="collapsible-header"><i class="material-icons">description</i> <h6>{{post['title']}}</h6></div>
-      <div class="collapsible-body"><span>{{post['content']}}</span></div>
+      <div class="collapsible-body"><h3>{{post['title']}}</h3>
+
+        <span>{{post['author']}}</span><span>{{post['date']}}</span>
+
+      </p><span>{{post['content']}}</span></div>
     </li>
     <!-- <li>
       <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
